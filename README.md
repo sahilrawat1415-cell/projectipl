@@ -41,7 +41,7 @@ The dashboard enables users to:
 - **Pandas** — Data cleaning, transformation, and analysis
 - **Matplotlib** — Custom charts (scatter plots, bar charts, pie charts, histograms)
 - **Streamlit** — Interactive web dashboard framework
-- **CSV Data Processing** — Ball-by-ball, team, player, and performance datasets
+- **CSV Data Processing** — Ball-by-ball, team, player, and team_performance datasets
 
 ---
 

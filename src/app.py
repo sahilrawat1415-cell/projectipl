@@ -68,34 +68,32 @@ player2 = st.sidebar.selectbox("Player 2", all_players, index=all_players.index(
 # ═════════════════════════════════════════════
 st.markdown("## 📊 Overview")
 
-kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-
 total_runs = int(ball['runs_scored'].sum())
 total_matches = ball['Match id'].nunique()
 total_players = ball['Striker'].nunique()
-avg_total = total_runs / matches
+
+avg_total = total_runs / total_matches
 avg_per_team = avg_total / 2
 
-col1, col2 = st.columns(2)
-
-col1.metric("Avg Total Runs/Match", round(avg_total, 2))
-col2.metric("Avg Runs per Team", round(avg_per_team, 2))
+kpi1, kpi2, kpi3, kpi4, kpi5 = st.columns(5)
 
 kpi1.metric("Matches", f"{total_matches:,}")
-kpi2.metric("Runs", f"{total_runs:,}")
+kpi2.metric("Total Runs", f"{total_runs:,}")
 kpi3.metric("Players", f"{total_players:,}")
-kpi4.metric("Avg Runs/Match", avg_runs)
+kpi4.metric("Avg Total Runs/Match", round(avg_total, 2))
+kpi5.metric("Avg Runs per Team", round(avg_per_team, 2))
+
+st.caption("Avg Total Runs = Combined score of both innings")
 
 # ═════════════════════════════════════════════
 # 3. KEY INSIGHTS BOX
 # ═════════════════════════════════════════════
-st.markdown("## 🔍 Key Insights")
-
-st.success(f"""
-✔ Total Runs: {total_runs:,}  
-✔ Avg Runs/Match: {avg_runs}  
-✔ Toss Impact: {round(toss_impact(teams_performance), 2)}%  
-✔ Boundaries: {int(ball['is_boundary'].sum()):,} | Dot Balls: {int(ball['is_dot'].sum()):,}
+st.info(f"""
+📊 Insight:
+- Total Runs: {total_runs}
+- Avg Total Runs/Match: {round(avg_total, 2)}
+- Avg Runs per Team: {round(avg_per_team, 2)}
+- Toss Impact: {round(toss_impact(teams_performance), 2)}%
 """)
 
 # ═════════════════════════════════════════════
