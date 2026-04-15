@@ -112,7 +112,7 @@ The dashboard includes:
 
 ## 👤 Author
 
-Built as a data analytics portfolio project demonstrating:
+Built as a data science portfolio project demonstrating:
 - Data cleaning and preprocessing
 - Exploratory data analysis (EDA)
 - Feature engineering (match phases, boundary detection)
