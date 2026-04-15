@@ -73,7 +73,13 @@ kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 total_runs = int(ball['runs_scored'].sum())
 total_matches = ball['Match id'].nunique()
 total_players = ball['Striker'].nunique()
-avg_runs = round(total_runs / total_matches, 2)
+avg_total = total_runs / matches
+avg_per_team = avg_total / 2
+
+col1, col2 = st.columns(2)
+
+col1.metric("Avg Total Runs/Match", round(avg_total, 2))
+col2.metric("Avg Runs per Team", round(avg_per_team, 2))
 
 kpi1.metric("Matches", f"{total_matches:,}")
 kpi2.metric("Runs", f"{total_runs:,}")
