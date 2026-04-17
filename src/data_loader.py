@@ -6,7 +6,13 @@ _PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 def load_data():
     data_dir = os.path.join(_PROJECT_ROOT, "data", "ipl")
-    ball = pd.read_csv(os.path.join(data_dir, "IPL_BallByBall2008_2024(Updated).csv"))
+    ball = pd.read_csv(
+    os.path.join(data_dir, "IPL_BallByBall2008_2024(Updated).csv"),
+    dtype={"Season": str},
+    low_memory=False
+)
+
+    ball["Season"] = ball["Season"].str[:4]
     teams_performance = pd.read_csv(os.path.join(data_dir, "team_performance_dataset_2008to2024.csv"))
     players = pd.read_csv(os.path.join(data_dir, "Players_Info_2024.csv"))
     teams = pd.read_csv(os.path.join(data_dir, "ipl_teams_2024_info.csv"))
